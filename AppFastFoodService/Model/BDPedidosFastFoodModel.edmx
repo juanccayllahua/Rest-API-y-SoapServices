@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDPedidosFastFoodModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DetallePedido">
+          <Key>
+            <PropertyRef Name="IdDetallePed" />
+          </Key>
+          <Property Name="IdDetallePed" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoPedido" Type="varchar" MaxLength="100" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PedidoFastFood">
+          <Key>
+            <PropertyRef Name="CodigoPedido" />
+          </Key>
+          <Property Name="CodigoPedido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="ImporteTot" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FechaPedido" Type="datetime" Nullable="false" />
+          <Property Name="FechaEntrega" Type="datetime" />
+          <Property Name="IdEstadoPedido" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityContainer Name="BDPedidosFastFoodModelStoreContainer">
+          <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoFastFood" EntityType="Self.PedidoFastFood" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDPedidosFastFoodModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DetallePedido">
+          <Key>
+            <PropertyRef Name="IdDetallePed" />
+          </Key>
+          <Property Name="IdDetallePed" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoPedido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PedidoFastFood">
+          <Key>
+            <PropertyRef Name="CodigoPedido" />
+          </Key>
+          <Property Name="CodigoPedido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="ImporteTot" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FechaPedido" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaEntrega" Type="DateTime" Precision="3" />
+          <Property Name="IdEstadoPedido" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="BDPedidosFastFoodEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" />
+          <EntitySet Name="PedidoFastFood" EntityType="Self.PedidoFastFood" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDPedidosFastFoodModelStoreContainer" CdmEntityContainer="BDPedidosFastFoodEntities">
+          <EntitySetMapping Name="DetallePedido">
+            <EntityTypeMapping TypeName="BDPedidosFastFoodModel.DetallePedido">
+              <MappingFragment StoreEntitySet="DetallePedido">
+                <ScalarProperty Name="IdDetallePed" ColumnName="IdDetallePed" />
+                <ScalarProperty Name="CodigoPedido" ColumnName="CodigoPedido" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoFastFood">
+            <EntityTypeMapping TypeName="BDPedidosFastFoodModel.PedidoFastFood">
+              <MappingFragment StoreEntitySet="PedidoFastFood">
+                <ScalarProperty Name="CodigoPedido" ColumnName="CodigoPedido" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="ImporteTot" ColumnName="ImporteTot" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="IdEstadoPedido" ColumnName="IdEstadoPedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

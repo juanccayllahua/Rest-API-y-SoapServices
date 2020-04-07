@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFastFoodService", "AppFastFoodService\AppFastFoodService.csproj", "{DA0CE628-10FE-4922-A7BC-C90C1E7A989B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestAppFastFoodService", "NUnitTestAppFastFoodService\NUnitTestAppFastFoodService.csproj", "{646DE496-6770-4D18-8BED-D5DC0856C60A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA0CE628-10FE-4922-A7BC-C90C1E7A989B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA0CE628-10FE-4922-A7BC-C90C1E7A989B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA0CE628-10FE-4922-A7BC-C90C1E7A989B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA0CE628-10FE-4922-A7BC-C90C1E7A989B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{646DE496-6770-4D18-8BED-D5DC0856C60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{646DE496-6770-4D18-8BED-D5DC0856C60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{646DE496-6770-4D18-8BED-D5DC0856C60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{646DE496-6770-4D18-8BED-D5DC0856C60A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F2CC85C-B8F9-4E4D-B075-D21BDD542624}
+	EndGlobalSection
+EndGlobal
