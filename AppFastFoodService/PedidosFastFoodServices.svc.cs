@@ -18,8 +18,10 @@ namespace AppFastFoodService
             BDPedidosFastFoodEntities dbContext = new BDPedidosFastFoodEntities();
 
             PedidoFastFood obj = new PedidoFastFood();
-            obj.FechaPedido = DateTime.Now;
+           
+            
             obj = pedidoFastFood;
+            obj.FechaPedido = DateTime.Now;
 
             dbContext.PedidoFastFood.Add(obj);
             dbContext.SaveChanges();
