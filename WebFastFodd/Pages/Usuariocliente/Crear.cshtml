@@ -1,0 +1,195 @@
+﻿@page
+@model WebFastFodd.Pages.Home.CrearModel
+@{
+    ViewData["Title"] = "Registro Usuario";
+}
+@*<form method="post">
+        Name:
+
+        <input type="submit" />
+    </form>*@
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Form</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container" style="min-height: 500px">
+
+    <div class="starter-template">
+
+
+        <div id="feedback"></div>
+
+        <form class="form-horizontal" id="search-form">
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Nombres</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Nombres" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Apellidos</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Apellidos" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">TipoDocId</label>
+                <div class="col-sm-10">
+                    <select id="TipoDocId"></select>
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Numero Documento</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="NumeroDocumento" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Fecha Nacimiento</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="FechaNac" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Número celular</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Numerocelular" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="Email" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Contrasenia</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="Contrasenia" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Departamento</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Departamento" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Provincia</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="provincia" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Distrito</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Distrito" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Dirección</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Direccion" />
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Autoriza uso de datos</label>
+                <div class="col-sm-10">
+                    <input type="checkbox" class="form-control" id="IndAutorizaDato" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" id="bth-search"
+                            class="btn btn-primary btn-lg">
+                        Crear Cuenta
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+
+@*<div class="container">
+    <footer>
+        <p>
+            © <a href="#">Demo</a> 2017
+        </p>
+    </footer>
+</div>*@
+<script>
+    $(document).ready(function () {
+
+        $("#search-form").submit(function (event) {
+            //cancela la acción del evento para que se haga manualmente
+            event.preventDefault();
+            fire_ajax_submit();
+
+        });
+
+    });
+
+    function fire_ajax_submit() {
+
+        var cliente = {
+            nombres: $("#Nombres").val(),
+            apellidos: $("#Apellidos").val()
+        }
+        console.log("Objeto JavaScript: ", cliente.nombres);
+
+
+
+
+        $("#btn-search").prop("disabled", true);
+
+        var url = 'http://localhost:60394/FastFoodServiceApi.svc/'
+        $.ajax({
+            type: "POST",
+            //contentType: "application/json",
+            contentType: 'application/json; charset=utf-8',
+            url: url + "post/cliente",
+            data: JSON.stringify(cliente),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+
+                var json = "<h4>Ajax Response</h4><pre>"
+                    + JSON.stringify(data, null, 4) + "</pre>";
+                $('#feedback').html(json);
+
+                console.log("SUCCESS : ", data);
+                $("#btn-search").prop("disabled", false);
+
+            },
+            error: function (e) {
+
+                var json = "<h4>Ajax Response Error</h4><pre>"
+                    + e.responseText + "</pre>";
+                var d = JSON.parse(e.responseText);
+                alert(d.message);
+                $('#feedback').html(d.message);
+
+                console.log("ERROR : ", e);
+                $("#btn-search").prop("disabled", false);
+
+            }
+        });
+
+    }
+
+</script>
