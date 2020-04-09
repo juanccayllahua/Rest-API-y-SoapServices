@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFastFoodService", "AppFastFoodService\AppFastFoodService.csproj", "{DA0CE628-10FE-4922-A7BC-C90C1E7A989B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestAppFastFoodService", "NUnitTestAppFastFoodService\NUnitTestAppFastFoodService.csproj", "{646DE496-6770-4D18-8BED-D5DC0856C60A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAppFastFoodService", "NUnitTestAppFastFoodService\NUnitTestAppFastFoodService.csproj", "{646DE496-6770-4D18-8BED-D5DC0856C60A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
