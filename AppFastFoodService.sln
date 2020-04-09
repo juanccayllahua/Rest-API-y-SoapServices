@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFastFoodService", "AppFa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAppFastFoodService", "NUnitTestAppFastFoodService\NUnitTestAppFastFoodService.csproj", "{646DE496-6770-4D18-8BED-D5DC0856C60A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFastFodd", "WebFastFodd\WebFastFodd.csproj", "{61B5003D-5F66-4784-B6C3-03EDD0B09826}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{646DE496-6770-4D18-8BED-D5DC0856C60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{646DE496-6770-4D18-8BED-D5DC0856C60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{646DE496-6770-4D18-8BED-D5DC0856C60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B5003D-5F66-4784-B6C3-03EDD0B09826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B5003D-5F66-4784-B6C3-03EDD0B09826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B5003D-5F66-4784-B6C3-03EDD0B09826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B5003D-5F66-4784-B6C3-03EDD0B09826}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
