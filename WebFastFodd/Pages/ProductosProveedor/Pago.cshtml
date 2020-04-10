@@ -1,0 +1,100 @@
+﻿@page
+@model WebFastFodd.Pages.ProductosProveedor.PagoModel
+@{
+    ViewData["Title"] = "Pagos";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #df3131;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgb(251, 200, 200);
+    }
+</style>
+<div class="containtop" style="padding-top: 10px;">
+
+</div>
+
+
+<div class="container" style="min-height: 500px;">
+
+
+    <div class="starter-template" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5); background: #ffffff; border: 1px solid #c2c2c2; padding: 10px ">
+
+
+        <div id="feedback"></div>
+        <form class="form-horizontal" id="search-form">
+            <div class="row form-group">
+                <div class="col-6">
+                    <strong style="text-align:center"> INFORMACION DE PAGO</strong>
+                </div>
+            </div>
+            <div class="row form-group">
+
+                <div class="col">
+                    Nombre:
+                    <input type="text" class="form-control" id="Nombres" placeholder="Nombres" />
+                </div>
+                <div class="col">
+                    Tienda:
+                    <input type="text" class="form-control" id="Tienda" placeholder="Tienda" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col">
+                    Total pagar:
+                    <input type="text" class="form-control" id="TotalPagar" placeholder="Total" />
+
+                </div>
+                <div class="col">
+                    <br />
+                    <input type="button" class="form-control" id="pagar" value="Ver Detalle" style="background-color:#df3131" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col">
+                    Número Tarjeta
+                    <input type="text" class="form-control" id="numTarjeta" placeholder="XXXX XXXX XXXX XXXX" />
+
+                </div>
+                <div class="col">
+                    Fec. Venc.
+                    <br />
+                    <input type="text" class="form-control" id="numTarjeta" placeholder="MM/AA" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10 text-center">
+                    <button type="submit" id="bth-search"
+                            class="btn btn-danger btn-lg">
+                        Pagar
+                    </button>
+                    <button type="submit" id="bth-search"
+                            class="btn btn-danger btn-lg">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+
+@*<div class="container">
+        <footer>
+            <p>
+                ©️ <a href="#">Demo</a> 2017
+            </p>
+        </footer>
+    </div>*@
+ 
+
+ 

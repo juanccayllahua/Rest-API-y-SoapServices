@@ -1,8 +1,9 @@
 ﻿@page
-@model WebFastFodd.Pages.Home.CrearModel
+@model WebFastFodd.Pages.UsuarioProveedor.CrearModel
 @{
-    ViewData["Title"] = "Registro Usuario";
+    ViewData["Title"] = "Registro Proveedor";
 }
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <style>
@@ -11,65 +12,91 @@
         background-color: #fff;
         border-color: #df3131;
         outline: 0;
-        box-shadow: 0 0 0 0.2rem rgb(251, 200, 200); 
+        box-shadow: 0 0 0 0.2rem rgb(251, 200, 200);
     }
 </style>
 <div class="containtop" style="padding-top: 120px;">
 
 </div>
- 
+
 <div class="container" style="min-height: 500px;">
     <div class="starter-template" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
         background: #ffffff;
         border: 1px solid #c2c2c2; padding:10px">
         <div id="feedback"></div>
-
         <form class="form-horizontal" id="search-form">
             <div class="row form-group">
                 <div class="col-6">
-                    <strong style="text-align:center"> INFORMACION DE CLIENTE</strong>
+                    <strong style="text-align:center"> INFORMACION DE PROVEEDOR</strong>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" class="form-control" id="Nombres" placeholder="Nombres" />
+                    <input type="text" class="form-control" id="NumRuc" placeholder="Ruc" />
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" id="Apellidos" placeholder="Apellidos" />
+                    <input type="text" class="form-control" id="RazSoc" placeholder="Razón Social" />
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <select id="TipoDocId" class="form-control">
-                        <option>Tipo Documento</option>
+                    <input type="text" class="form-control" id="DescProducto" placeholder="Descripción Producto" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col">
+                    <select id="departamento" class="form-control">
+                        <option>Departamento</option>
                     </select>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" id="NumeroDocumento" placeholder="Número Documento" />
+                    <select id="departamento" class="form-control">
+                        <option>Provincia</option>
+                    </select>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" class="form-control" id="Numerocelular" placeholder="Número Celular" />
+                    <select id="distrito" class="form-control">
+                        <option>Distrito</option>
+                    </select>
                 </div>
                 <div class="col">
-                    <input type="email" class="form-control" id="Email" placeholder="Email" />
+                    <input type="text" class="form-control" id="NomRep" placeholder="Nombre Sede" />
                 </div>
             </div>
             <div class="row form-group">
+                <div class="col">
+                    <input type="text" class="form-control" id="DirSede" placeholder="Dirección Sede" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col">
+                    <input type="text" class="form-control" id="NomRep" placeholder="Nombre Representante" />
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="ApeRep" placeholder="Apellido Representante" />
+                </div>
+            </div>
 
+            <div class="row form-group">
                 <div class="col">
-                    <input type="password" class="form-control" id="Contrasenia" placeholder="password" />
+                    <input type="text" class="form-control" id="usuAten" placeholder="Usuario Persona Atención" />
                 </div>
                 <div class="col">
-                    <input type="password" class="form-control" id="Contrasenia" placeholder="password" />
+                    <input type="password" class="form-control" id="password" placeholder="Password" />
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" class="form-control" id="Direccion" placeholder="Direccion" />
+                    <input type="text" class="form-control" id="email" placeholder="Email" />
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="numerocel" placeholder="Número de celular" />
                 </div>
             </div>
+
+
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="IndAutorizaDato">
@@ -167,4 +194,3 @@
 
     }
 
-</script>

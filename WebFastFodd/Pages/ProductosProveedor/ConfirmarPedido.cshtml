@@ -1,0 +1,118 @@
+﻿@page
+@model WebFastFodd.Pages.ProductosProveedor.ConfirmarPedidoModel
+
+@{
+    ViewData["Title"] = "Confirmar Pedido";
+}
+<div class="containtop" style="padding-top: 120px;">
+
+</div>
+STARBUCK > Realizar Pedido
+<br />
+@*<div class="starter-template" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+            background: #ffffff;
+            border: 1px solid #c2c2c2; padding:10px">
+        <div class="media position-relative">
+            <img src="https://www.starbucks.com.pe/media/MARSHMELLOW_tcm92-46374_w1024_n.png" class="mr-3" alt="...">
+            <div class="media-body">
+                <h5 class="mt-0">Caramel</h5>
+                <p>Cras sit amet nibh libero, in gravida nulla. </p>
+                <p>s/. 20</p>
+                <a href="#" class="stretched-link">Quitar</a>
+            </div>
+        </div>
+        <div class="media position-relative">
+            <img src="https://www.starbucks.com.pe/media/STBX-CALADOS-96X123-algarrobina_tcm92-46375_w1024_n.png" class="mr-3" alt="...">
+            <div class="media-body">
+                <h5 class="mt-0">Chip</h5>
+                <p>Cras sit amet nibh libero, in gravida nulla. </p>
+                <p>s/. 10</p>
+                <a href="#" class="stretched-link">Quitar</a>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10 text-center">
+                <button type="submit" id="bth-search"
+                        class="btn btn-danger btn-lg">
+                    Confirmar pedido s/. 30
+                </button>
+            </div>
+        </div>
+    </div>*@
+
+<div class="starter-template" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+        background: #ffffff;
+        border: 1px solid #c2c2c2; padding:10px;margin-bottom:10px">
+    <div class="row form-group">
+        <div class="col-6">
+            <strong style="text-align:center"> CONFIRMAR PEDIDO</strong>
+        </div>
+    </div>
+    @*<div class="form-row">
+            <div class="col-3">
+                <input type="text" class="form-control" placeholder="Código Pedido">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Fecha Pedido">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Datos Pedido">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-danger mb-2">Buscar</button>
+                <button type="submit" class="btn btn-danger mb-2">Limpiar</button>
+            </div>
+        </div>*@ 
+
+
+    <br />
+
+    <table class="table" style="margin-bottom:10px">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Agregar</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Quitar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>
+                    <img src="https://www.starbucks.com.pe/media/STBX-CALADOS-96X123-algarrobina_tcm92-46375_w1024_n.png" class="mr-3" alt="...">
+                    Caramel
+                </td>
+                <td><input type="number" id="nCantidad4" style="width:50px" class="form-control-sm" autofocus />   <button class="btn-danger btn-sm">+</button><button class="btn-danger btn-sm">-</button></td>
+                <td>S/. 30</td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">Quitar</button></td>
+
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>
+                    <img src="https://www.starbucks.com.pe/media/MARSHMELLOW_tcm92-46374_w1024_n.png" class="mr-3" alt="...">
+                    Chip
+                </td>
+                <td><input type="number" id="nCantidad4" style="width:50px" class="form-control-sm" autofocus />   <button class="btn-danger btn-sm">+</button><button class="btn-danger btn-sm">-</button></td>
+                <td>S/. 20</td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">Quitar</button></td>
+            </tr>
+        </tbody>
+
+
+    </table>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10 text-center">
+            <input class="form-control-sm" type="text" placeholder="Selecione sede de entrega" />
+            <input class="form-control-sm" type="date" placeholder="Fecha y Hora de Entrega" />
+            <button type="submit" id="bth-search"
+                    class="btn btn-danger btn-sm">
+                Confirmar pedido s/. 50
+            </button>
+        </div>
+    </div>
+</div>

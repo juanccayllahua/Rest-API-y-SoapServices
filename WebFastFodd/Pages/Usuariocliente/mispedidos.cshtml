@@ -1,0 +1,66 @@
+﻿@page
+@model WebFastFodd.Pages.Usuariocliente.mispedidosModel
+@{
+    ViewData["Title"] = "Mis Pedidos";
+}
+<style>
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #df3131;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgb(251, 200, 200);
+    }
+</style>
+<div class="containtop" style="padding-top: 120px;">
+
+</div>
+
+<br />
+<div class="starter-template" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+        background: #ffffff;
+        border: 1px solid #c2c2c2; padding:10px;margin-bottom:10px">
+
+    <br />
+    <div class="row form-group">
+        <div class="col-6">
+            <strong style="text-align:center">HOLA JUAN, ESTOS SON TUS PEDIDOS MÁS RECIENTES</strong>
+        </div>
+    </div>
+    <table class="table" style="margin-bottom:10px">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Fecha Pedido</th>
+                <th scope="col">Código Pedido</th>
+                <th scope="col">Fecha Entrega</th>
+                <th scope="col">Detalle Pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>11/04/2020 09:33 pm</td>
+                <td>x01o=1</td>
+                <td>10/04/2020 07:30 am</td>
+                <td>Caramel Chip</td>
+
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>11/04/2020 09:00 pm</td>
+                <td>x01o=2</td>
+                <td>10/04/2020 07:30 am</td>
+                <td>Chip Caramel </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>11/04/2020 08:30 pm</td>
+                <td>x01oa=1</td>
+                <td>10/04/2020 07:30 am</td>
+                <td>Chip</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

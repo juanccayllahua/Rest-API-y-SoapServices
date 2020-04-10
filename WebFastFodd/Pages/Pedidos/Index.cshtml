@@ -1,0 +1,118 @@
+﻿@page
+@model WebFastFodd.Pages.Pedidos.IndexModel
+@{
+    ViewData["Title"] = "Listado de pedidos";
+}
+
+<style>
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #df3131;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgb(251, 200, 200);
+    }
+</style>
+<div class="containtop" style="padding-top: 120px;">
+
+</div>
+STARBUCK > Consultar Pedidos / Entrega
+<br />
+<div class="starter-template" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+        background: #ffffff;
+        border: 1px solid #c2c2c2; padding:10px;margin-bottom:10px">
+    <div class="row form-group">
+        <div class="col-6">
+            <strong style="text-align:center"> PEDIDOS</strong>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-3">
+            <input type="text" class="form-control" placeholder="Código Pedido">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Fecha Pedido">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Datos Pedido">
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-danger mb-2">Buscar</button>
+            <button type="submit" class="btn btn-danger mb-2">Limpiar</button>
+        </div>
+    </div>
+    <label style="padding-bottom:10px;">Listado de resultados encontrados</label>
+
+
+    <br />
+
+    <table class="table" style="margin-bottom:10px">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">FechaRegistro</th>
+                <th scope="col">Código Pedido</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Fecha Entrega</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>11/04/2020 09:33 pm</td>
+                <td>x01o=1</td>
+                <td>Juan</td>
+                <td>10/04/2020 07:30 am</td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">Ver</button></td>
+
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>11/04/2020 09:00 pm</td>
+                <td>x01o=2</td>
+                <td>Jesus</td>
+                <td>10/04/2020 07:30 am</td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">Ver</button></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>11/04/2020 08:30 pm</td>
+                <td>x01oa=1</td>
+                <td>María</td>
+                <td>10/04/2020 07:30 am</td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">Ver</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">CódigoPedido: x01o=2</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Detalle Pedido:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Estado Pedido:</label>
+                        @*<input type="text" class="form-control" id="recipient-name">*@
+                        <select class="form-control"><option>En Atención</option></select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
