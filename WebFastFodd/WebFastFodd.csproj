@@ -29,4 +29,9 @@
     <Folder Include="wwwroot\staticjs\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppRestFastFoodService\AppRestFastFoodService.csproj" />
+  </ItemGroup>
+
 </Project>

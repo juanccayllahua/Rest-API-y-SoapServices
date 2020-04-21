@@ -11,13 +11,13 @@
         background-color: #fff;
         border-color: #df3131;
         outline: 0;
-        box-shadow: 0 0 0 0.2rem rgb(251, 200, 200); 
+        box-shadow: 0 0 0 0.2rem rgb(251, 200, 200);
     }
 </style>
 <div class="containtop" style="padding-top: 120px;">
 
 </div>
- 
+
 <div class="container" style="min-height: 500px;">
     <div class="starter-template" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
         background: #ffffff;
@@ -83,11 +83,11 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 text-center">
                     <button type="submit" id="bth-search"
-                            class="btn btn-danger btn-lg">
+                            class="btn btn-danger btn-sm" onclick="cityClickJQuery();">
                         Crear Cuenta
                     </button>
                     <button type="submit" id="bth-search"
-                            class="btn btn-danger btn-lg">
+                            class="btn btn-danger btn-sm">
                         Ya tengo una cuenta
                     </button>
                 </div>
@@ -107,12 +107,26 @@
         </footer>
     </div>*@
 <script>
+
+    function cityClickJQuery() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:60394/FastFoodServiceApi.svc/saludo",
+            data: { nombre: 'juan' },
+            processData: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                alert(data.d);
+            }
+        });
+    }
     $(document).ready(function () {
 
         $("#search-form").submit(function (event) {
             //cancela la acción del evento para que se haga manualmente
             event.preventDefault();
-            fire_ajax_submit();
+            //fire_ajax_submit();
 
         });
 
@@ -131,18 +145,17 @@
 
         $("#btn-search").prop("disabled", true);
 
-        var url = 'http://localhost:60394/FastFoodServiceApi.svc/'
+        //var url = 'http://localhost:60394/FastFoodServiceApi.svc/'
         $.ajax({
-            type: "POST",
-            //contentType: "application/json",
+            type: "POST", 
             contentType: 'application/json; charset=utf-8',
-            url: url + "post/cliente",
-            data: JSON.stringify(cliente),
+            url:  "http://localhost:60394/FastFoodServiceApi/Cliente",
+            data: '{"nombre":"juan"}',
             dataType: 'json',
             cache: false,
             timeout: 600000,
             success: function (data) {
-
+                alert(1);
                 var json = "<h4>Ajax Response</h4><pre>"
                     + JSON.stringify(data, null, 4) + "</pre>";
                 $('#feedback').html(json);
@@ -152,6 +165,8 @@
 
             },
             error: function (e) {
+
+                alert(10001);
 
                 var json = "<h4>Ajax Response Error</h4><pre>"
                     + e.responseText + "</pre>";

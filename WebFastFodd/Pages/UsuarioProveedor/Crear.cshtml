@@ -110,11 +110,11 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 text-center">
                     <button type="submit" id="bth-search"
-                            class="btn btn-danger btn-lg">
+                            class="btn btn-danger btn-sm">
                         Crear Cuenta
                     </button>
                     <button type="submit" id="bth-search"
-                            class="btn btn-danger btn-lg">
+                            class="btn btn-danger btn-sm">
                         Ya tengo una cuenta
                     </button>
                 </div>
@@ -163,6 +163,7 @@
             type: "POST",
             //contentType: "application/json",
             contentType: 'application/json; charset=utf-8',
+            mode:'cors',
             url: url + "post/cliente",
             data: JSON.stringify(cliente),
             dataType: 'json',

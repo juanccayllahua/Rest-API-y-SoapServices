@@ -11,6 +11,7 @@ namespace WebFastFodd.Pages.Home
     {
         public void OnGet()
         {
+
         }
     }
 }
