@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BDClientesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BDClientesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="IdCliente" />
@@ -13,7 +13,6 @@
           <Property Name="Nombres" Type="varchar" MaxLength="100" />
           <Property Name="Apellidos" Type="varchar" MaxLength="200" />
           <Property Name="TipoDocId" Type="char" MaxLength="1" />
-          <Property Name="DocId" Type="varchar" MaxLength="12" />
           <Property Name="FechaNac" Type="datetime" />
           <Property Name="Numerocelular" Type="char" MaxLength="12" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
@@ -27,12 +26,12 @@
           <Property Name="UsuarioCreacion" Type="varchar" MaxLength="200" />
           <Property Name="FechaModifacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="varchar" MaxLength="200" />
+          <Property Name="numerodoc" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityContainer Name="BDClientesModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDClientesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -44,7 +43,6 @@
           <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="TipoDocId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="DocId" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="FechaNac" Type="DateTime" Precision="3" />
           <Property Name="Numerocelular" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -58,6 +56,7 @@
           <Property Name="UsuarioCreacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="FechaModifacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="numerodoc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="BDClientesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
@@ -71,11 +70,11 @@
           <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="BDClientesModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="numerodoc" ColumnName="numerodoc" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
                 <ScalarProperty Name="TipoDocId" ColumnName="TipoDocId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
                 <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
                 <ScalarProperty Name="Numerocelular" ColumnName="Numerocelular" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

@@ -24,7 +24,7 @@
         border: 1px solid #c2c2c2; padding:10px">
         <div id="feedback"></div>
 
-        <form class="form-horizontal" id="search-form">
+        <form class="form-horizontal" id="search-form" method="post">
             <div class="row form-group">
                 <div class="col-6">
                     <strong style="text-align:center"> INFORMACION DE CLIENTE</strong>
@@ -32,47 +32,49 @@
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" class="form-control" id="Nombres" placeholder="Nombres" />
+                    <input type="text" class="form-control" id="Nombres" placeholder="Nombres" asp-for="cliente.Nombres" />
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" id="Apellidos" placeholder="Apellidos" />
+                    <input type="text" class="form-control" id="Apellidos" placeholder="Apellidos" asp-for="cliente.Apellidos" />
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <select id="TipoDocId" class="form-control">
+                    <select id="TipoDocId" class="form-control" asp-for="cliente.TipoDocId">
                         <option>Tipo Documento</option>
+                        <option value="1">DNI</option>
+                        <option value="2">Carnet de Extranjeria</option>
                     </select>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" id="NumeroDocumento" placeholder="Número Documento" />
+                    <input type="text" class="form-control" id="NumeroDocumento" placeholder="Número Documento" asp-for="cliente.numerodoc" />
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" class="form-control" id="Numerocelular" placeholder="Número Celular" />
+                    <input type="text" class="form-control" id="Numerocelular" placeholder="Número Celular" asp-for="cliente.Numerocelular" />
                 </div>
                 <div class="col">
-                    <input type="email" class="form-control" id="Email" placeholder="Email" />
+                    <input type="email" class="form-control" id="Email" placeholder="Email" asp-for="cliente.Email" />
                 </div>
             </div>
             <div class="row form-group">
 
                 <div class="col">
-                    <input type="password" class="form-control" id="Contrasenia" placeholder="password" />
+                    <input type="password" class="form-control" id="Contrasenia" placeholder="password" asp-for="cliente.Contrasenia" />
                 </div>
                 <div class="col">
-                    <input type="password" class="form-control" id="Contrasenia" placeholder="password" />
+                    <input type="password" class="form-control" id="Contrasenia" placeholder="password" asp-for="cliente.Contrasenia" />
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" class="form-control" id="Direccion" placeholder="Direccion" />
+                    <input type="text" class="form-control" id="Direccion" placeholder="Direccion" asp-for="cliente.Direccion" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="IndAutorizaDato">
+                    <input class="form-check-input" type="checkbox" id="IndAutorizaDato" asp-for="cliente.IndAutorizaDato">
                     <label class="form-check-label" for="gridCheck">
                         Autoriza uso de datos
                     </label>
@@ -83,7 +85,8 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 text-center">
                     <button type="submit" id="bth-search"
-                            class="btn btn-danger btn-sm" onclick="cityClickJQuery();">
+                            class="btn btn-danger btn-sm">
+
                         Crear Cuenta
                     </button>
                     <button type="submit" id="bth-search"
@@ -106,80 +109,3 @@
             </p>
         </footer>
     </div>*@
-<script>
-
-    function cityClickJQuery() {
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:60394/FastFoodServiceApi.svc/saludo",
-            data: { nombre: 'juan' },
-            processData: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                alert(data.d);
-            }
-        });
-    }
-    $(document).ready(function () {
-
-        $("#search-form").submit(function (event) {
-            //cancela la acción del evento para que se haga manualmente
-            event.preventDefault();
-            //fire_ajax_submit();
-
-        });
-
-    });
-
-    function fire_ajax_submit() {
-
-        var cliente = {
-            nombres: $("#Nombres").val(),
-            apellidos: $("#Apellidos").val()
-        }
-        console.log("Objeto JavaScript: ", cliente.nombres);
-
-
-
-
-        $("#btn-search").prop("disabled", true);
-
-        //var url = 'http://localhost:60394/FastFoodServiceApi.svc/'
-        $.ajax({
-            type: "POST", 
-            contentType: 'application/json; charset=utf-8',
-            url:  "http://localhost:60394/FastFoodServiceApi/Cliente",
-            data: '{"nombre":"juan"}',
-            dataType: 'json',
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
-                alert(1);
-                var json = "<h4>Ajax Response</h4><pre>"
-                    + JSON.stringify(data, null, 4) + "</pre>";
-                $('#feedback').html(json);
-
-                console.log("SUCCESS : ", data);
-                $("#btn-search").prop("disabled", false);
-
-            },
-            error: function (e) {
-
-                alert(10001);
-
-                var json = "<h4>Ajax Response Error</h4><pre>"
-                    + e.responseText + "</pre>";
-                var d = JSON.parse(e.responseText);
-                alert(d.message);
-                $('#feedback').html(d.message);
-
-                console.log("ERROR : ", e);
-                $("#btn-search").prop("disabled", false);
-
-            }
-        });
-
-    }
-
-</script>

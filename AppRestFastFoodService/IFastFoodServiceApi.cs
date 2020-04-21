@@ -23,9 +23,8 @@ namespace AppRestFastFoodService
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
         string saludo(string nombre);
 
-        [OperationContract]
-        [WebInvoke(UriTemplate = "cliente/{nombre}")]
-        Cliente cliente(string nombre);
+        [OperationContract] 
+        Cliente cliente(Cliente pClient);
 
         [OperationContract]
 

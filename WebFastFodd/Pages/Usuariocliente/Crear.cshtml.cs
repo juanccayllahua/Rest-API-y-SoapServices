@@ -13,5 +13,27 @@ namespace WebFastFodd.Pages.Home
         {
 
         }
+
+        [BindProperty]
+        public RestServiceReference.Cliente cliente { get; set; }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            RestServiceReference.FastFoodServiceApiClient apiClient
+                = new RestServiceReference.FastFoodServiceApiClient();
+
+            //PedidosServiceReference.PedidosFastFoodServicesClient objcliente
+            //    = new PedidosServiceReference.PedidosFastFoodServicesClient();
+
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var result = await apiClient.clienteAsync(cliente);
+
+
+            return RedirectToPage("./gracias");
+        }
     }
 }

@@ -3,3 +3,64 @@
 @{
     ViewData["Title"] = "Login";
 }
+ 
+<style>
+
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #df3131;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgb(251, 200, 200);
+    }
+</style>
+<div class="containtop" style="padding-top: 10px;">
+
+</div>
+
+
+<div class="container" style="min-height: 500px;">
+
+
+    <div class="starter-template" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5); background: #ffffff; border: 1px solid #c2c2c2; padding: 10px ">
+
+
+        <div id="feedback"></div>
+        <form class="form-horizontal" id="search-form">
+            <div class="row form-group">
+                <div class="col-6">
+                    <strong style="text-align:center"> Login</strong>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col">
+                    Usuario:
+                    <input type="text" class="form-control" id="usuario" placeholder="Usuario" />
+                </div>
+                <div class="col">
+                    Contraseña:
+                    <input type="password" class="form-control" id="password" placeholder="contraseña" />
+                </div>
+            </div> 
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10 text-center">
+                    <button type="submit" id="bth-search"
+                            class="btn btn-danger btn-sm">
+
+                        <a href="/Pedidos/Agradecimiento">Ingresar</a>
+                    </button>
+                    <button type="submit" id="bth-search"
+                            class="btn btn-danger btn-sm">
+                        Crear Cuenta
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+ 

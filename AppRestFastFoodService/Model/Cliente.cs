@@ -18,7 +18,6 @@ namespace AppRestFastFoodService.Model
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string TipoDocId { get; set; }
-        public string DocId { get; set; }
         public Nullable<System.DateTime> FechaNac { get; set; }
         public string Numerocelular { get; set; }
         public string Email { get; set; }
@@ -32,5 +31,6 @@ namespace AppRestFastFoodService.Model
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModifacion { get; set; }
         public string UsuarioModificacion { get; set; }
+        public string numerodoc { get; set; }
     }
 }

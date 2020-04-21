@@ -18,16 +18,17 @@ namespace AppRestFastFoodService
         {
             return "Hola " + nombre;
         }
-        public Cliente cliente(string nombre)
+        public Cliente cliente(Cliente pClient)
         {
-            Cliente pClient = new Cliente();
-            pClient.Nombres = nombre;
+            //Cliente pClient = new Cliente();
+            //pClient.Nombres = nombre;
 
 
             BDClientesEntities bdContext = new BDClientesEntities();
 
             Cliente objcliente = new Cliente();
             objcliente = pClient;
+            objcliente.IndAutorizaDato = pClient.IndAutorizaDato == "true" ? "1" : "0";
             objcliente.FechaCreacion = DateTime.Now;
             objcliente.UsuarioCreacion = "usuApiRest";
 
