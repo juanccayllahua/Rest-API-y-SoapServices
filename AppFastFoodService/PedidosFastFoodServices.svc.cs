@@ -13,6 +13,29 @@ namespace AppFastFoodService
     public class PedidosFastFoodServices : IPedidosFastFoodServices
     {
 
+        public Cliente registrarcliente(Cliente objcliente)
+        {
+            Cliente obj = new Cliente();
+            obj = objcliente;
+            obj.FechaCreacion = DateTime.Now;
+            obj.FechaModifacion = DateTime.Now;
+            obj.UsuarioCreacion = "usarApp";
+            obj.UsuarioModificacion = "usarApp";
+            obj.FechaNac = DateTime.Now;
+            obj.IdDistrito = "1";
+            obj.IdProvincia= "1";
+            obj.IdDepartamento = "2";
+             
+
+
+            BDClientesEntities dbcontext = new BDClientesEntities();
+            
+            dbcontext.Cliente.Add(obj);
+            dbcontext.SaveChanges();
+
+            return obj;
+        }
+
         public PedidoFastFood registrarPedido(PedidoFastFood pedidoFastFood)
         {
             BDPedidosFastFoodEntities dbContext = new BDPedidosFastFoodEntities();

@@ -15,11 +15,11 @@ namespace WebFastFodd.Pages.Home
         }
 
         [BindProperty]
-        public RestServiceReference.Cliente cliente { get; set; }
+        public FastSoapServiceReference.Cliente cliente { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
-            RestServiceReference.FastFoodServiceApiClient apiClient
-                = new RestServiceReference.FastFoodServiceApiClient();
+            FastSoapServiceReference.PedidosFastFoodServicesClient apiClient
+                = new FastSoapServiceReference.PedidosFastFoodServicesClient();
 
             //PedidosServiceReference.PedidosFastFoodServicesClient objcliente
             //    = new PedidosServiceReference.PedidosFastFoodServicesClient();
@@ -30,10 +30,10 @@ namespace WebFastFodd.Pages.Home
                 return Page();
             }
 
-            var result = await apiClient.clienteAsync(cliente);
+            var result = await apiClient.registrarclienteAsync(cliente);
+            var nombre = result.Nombres + " " + result.Apellidos;
 
-
-            return RedirectToPage("./gracias");
+            return RedirectToPage("./gracias?nombre="+nombre);
         }
     }
 }

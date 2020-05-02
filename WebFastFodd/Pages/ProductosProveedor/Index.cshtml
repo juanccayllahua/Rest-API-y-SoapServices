@@ -3,13 +3,58 @@
 @{
     ViewData["Title"] = "Productos";
 }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    fire_ajax_submit();
+
+    function fire_ajax_submit() {
+
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: "https://localhost:44329/api/v1/providers",
+            //data: JSON.stringify(producto),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    //stringify
+                    var jsonData = JSON.stringify(value);
+                    //Parse JSON
+                    var objData = $.parseJSON(jsonData);
+                    console.log(objData);
+                    var razonsocial = objData.razonsocial;
+                    var descripcionProductos = objData.descripcionProductos;
+                    var urlimg = objData.urlimg;
+                    var idProveedor = objData.idProveedor;
+                    $('<div class="card" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);background: #ffffff;border: 1px solid #c2c2c2;padding: 10px;"><a href="ProductosProveedor/crearpedido?idproveedor=' + idProveedor+'"><img class="card-img-top" src="' + urlimg + '" alt="Card image cap"><div class="card-body"><h5 class="card-title" >' + razonsocial + '</h5><p class="card-text"  style="font-size:80%">' + descripcionProductos + '</p> <p class="card-text"><small class="text-muted">' + 'hace 9 min' +
+                        '</small></p></div></a>  </div>').appendTo('#listproveedor');
+                }
+                );
+            },
+            error: function (e) {   
+
+
+                console.log("ERROR : ", e);
+
+            }
+        });
+
+    }
+</script>
+<div class="card-deck" id="listproveedor">
+
+</div>
 <div class="containtop" style="padding-top: 120px;">
 
 </div>
-<div class="card-deck">
+<div class="card-deck" style="display:none">
 
     <div class="card" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);background: #ffffff;border: 1px solid #c2c2c2;padding: 10px;">
-        <a href="ProductosProveedor/crearpedido"  >
+        <a href="ProductosProveedor/crearpedido">
             <img class="card-img-top" src="https://i0.pngocean.com/files/651/153/138/5bbc0db66e5ae-thumb.jpg" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -43,3 +88,4 @@
         </div>
     </div>
 </div>
+

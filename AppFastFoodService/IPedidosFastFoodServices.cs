@@ -13,17 +13,21 @@ namespace AppFastFoodService
     [ServiceContract]
     public interface IPedidosFastFoodServices
     {
-        [OperationContract]//hola 
+
+        [OperationContract]
+        Cliente registrarcliente(Cliente objcliente);
+
+        [OperationContract]
         PedidoFastFood registrarPedido(PedidoFastFood pedidoFastFood);
-        
+
         [OperationContract]
         List<PedidoFastFood> listaPedidos(int idcliente);
 
         [OperationContract]
         PedidoFastFood actualizarEstadoPedido(PedidoFastFood pedidoFastFood);
-        
 
-         
+
+
 
 
     }

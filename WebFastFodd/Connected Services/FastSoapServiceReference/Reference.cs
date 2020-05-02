@@ -7,10 +7,287 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PedidosServiceReference
+namespace FastSoapServiceReference
 {
     using System.Runtime.Serialization;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cliente", Namespace="http://schemas.datacontract.org/2004/07/AppFastFoodService.Model")]
+    public partial class Cliente : object
+    {
+        
+        private string ApellidosField;
+        
+        private string ContraseniaField;
+        
+        private string DireccionField;
+        
+        private string DocIdField;
+        
+        private string EmailField;
+        
+        private System.Nullable<System.DateTime> FechaCreacionField;
+        
+        private System.Nullable<System.DateTime> FechaModifacionField;
+        
+        private System.Nullable<System.DateTime> FechaNacField;
+        
+        private int IdClienteField;
+        
+        private string IdDepartamentoField;
+        
+        private string IdDistritoField;
+        
+        private string IdProvinciaField;
+        
+        private string IndAutorizaDatoField;
+        
+        private string NombresField;
+        
+        private string NumerocelularField;
+        
+        private string TipoDocIdField;
+        
+        private string UsuarioCreacionField;
+        
+        private string UsuarioModificacionField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Apellidos
+        {
+            get
+            {
+                return this.ApellidosField;
+            }
+            set
+            {
+                this.ApellidosField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Contrasenia
+        {
+            get
+            {
+                return this.ContraseniaField;
+            }
+            set
+            {
+                this.ContraseniaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Direccion
+        {
+            get
+            {
+                return this.DireccionField;
+            }
+            set
+            {
+                this.DireccionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DocId
+        {
+            get
+            {
+                return this.DocIdField;
+            }
+            set
+            {
+                this.DocIdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email
+        {
+            get
+            {
+                return this.EmailField;
+            }
+            set
+            {
+                this.EmailField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FechaCreacion
+        {
+            get
+            {
+                return this.FechaCreacionField;
+            }
+            set
+            {
+                this.FechaCreacionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FechaModifacion
+        {
+            get
+            {
+                return this.FechaModifacionField;
+            }
+            set
+            {
+                this.FechaModifacionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FechaNac
+        {
+            get
+            {
+                return this.FechaNacField;
+            }
+            set
+            {
+                this.FechaNacField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdCliente
+        {
+            get
+            {
+                return this.IdClienteField;
+            }
+            set
+            {
+                this.IdClienteField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdDepartamento
+        {
+            get
+            {
+                return this.IdDepartamentoField;
+            }
+            set
+            {
+                this.IdDepartamentoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdDistrito
+        {
+            get
+            {
+                return this.IdDistritoField;
+            }
+            set
+            {
+                this.IdDistritoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdProvincia
+        {
+            get
+            {
+                return this.IdProvinciaField;
+            }
+            set
+            {
+                this.IdProvinciaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IndAutorizaDato
+        {
+            get
+            {
+                return this.IndAutorizaDatoField;
+            }
+            set
+            {
+                this.IndAutorizaDatoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombres
+        {
+            get
+            {
+                return this.NombresField;
+            }
+            set
+            {
+                this.NombresField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Numerocelular
+        {
+            get
+            {
+                return this.NumerocelularField;
+            }
+            set
+            {
+                this.NumerocelularField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoDocId
+        {
+            get
+            {
+                return this.TipoDocIdField;
+            }
+            set
+            {
+                this.TipoDocIdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UsuarioCreacion
+        {
+            get
+            {
+                return this.UsuarioCreacionField;
+            }
+            set
+            {
+                this.UsuarioCreacionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UsuarioModificacion
+        {
+            get
+            {
+                return this.UsuarioModificacionField;
+            }
+            set
+            {
+                this.UsuarioModificacionField = value;
+            }
+        }
+    }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
@@ -125,28 +402,31 @@ namespace PedidosServiceReference
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PedidosServiceReference.IPedidosFastFoodServices")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FastSoapServiceReference.IPedidosFastFoodServices")]
     public interface IPedidosFastFoodServices
     {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedidosFastFoodServices/registrarcliente", ReplyAction="http://tempuri.org/IPedidosFastFoodServices/registrarclienteResponse")]
+        System.Threading.Tasks.Task<FastSoapServiceReference.Cliente> registrarclienteAsync(FastSoapServiceReference.Cliente objcliente);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedidosFastFoodServices/registrarPedido", ReplyAction="http://tempuri.org/IPedidosFastFoodServices/registrarPedidoResponse")]
-        System.Threading.Tasks.Task<PedidosServiceReference.PedidoFastFood> registrarPedidoAsync(PedidosServiceReference.PedidoFastFood pedidoFastFood);
+        System.Threading.Tasks.Task<FastSoapServiceReference.PedidoFastFood> registrarPedidoAsync(FastSoapServiceReference.PedidoFastFood pedidoFastFood);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedidosFastFoodServices/listaPedidos", ReplyAction="http://tempuri.org/IPedidosFastFoodServices/listaPedidosResponse")]
-        System.Threading.Tasks.Task<PedidosServiceReference.PedidoFastFood[]> listaPedidosAsync(int idcliente);
+        System.Threading.Tasks.Task<FastSoapServiceReference.PedidoFastFood[]> listaPedidosAsync(int idcliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedidosFastFoodServices/actualizarEstadoPedido", ReplyAction="http://tempuri.org/IPedidosFastFoodServices/actualizarEstadoPedidoResponse")]
-        System.Threading.Tasks.Task<PedidosServiceReference.PedidoFastFood> actualizarEstadoPedidoAsync(PedidosServiceReference.PedidoFastFood pedidoFastFood);
+        System.Threading.Tasks.Task<FastSoapServiceReference.PedidoFastFood> actualizarEstadoPedidoAsync(FastSoapServiceReference.PedidoFastFood pedidoFastFood);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface IPedidosFastFoodServicesChannel : PedidosServiceReference.IPedidosFastFoodServices, System.ServiceModel.IClientChannel
+    public interface IPedidosFastFoodServicesChannel : FastSoapServiceReference.IPedidosFastFoodServices, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class PedidosFastFoodServicesClient : System.ServiceModel.ClientBase<PedidosServiceReference.IPedidosFastFoodServices>, PedidosServiceReference.IPedidosFastFoodServices
+    public partial class PedidosFastFoodServicesClient : System.ServiceModel.ClientBase<FastSoapServiceReference.IPedidosFastFoodServices>, FastSoapServiceReference.IPedidosFastFoodServices
     {
         
         /// <summary>
@@ -189,17 +469,22 @@ namespace PedidosServiceReference
         {
         }
         
-        public System.Threading.Tasks.Task<PedidosServiceReference.PedidoFastFood> registrarPedidoAsync(PedidosServiceReference.PedidoFastFood pedidoFastFood)
+        public System.Threading.Tasks.Task<FastSoapServiceReference.Cliente> registrarclienteAsync(FastSoapServiceReference.Cliente objcliente)
+        {
+            return base.Channel.registrarclienteAsync(objcliente);
+        }
+        
+        public System.Threading.Tasks.Task<FastSoapServiceReference.PedidoFastFood> registrarPedidoAsync(FastSoapServiceReference.PedidoFastFood pedidoFastFood)
         {
             return base.Channel.registrarPedidoAsync(pedidoFastFood);
         }
         
-        public System.Threading.Tasks.Task<PedidosServiceReference.PedidoFastFood[]> listaPedidosAsync(int idcliente)
+        public System.Threading.Tasks.Task<FastSoapServiceReference.PedidoFastFood[]> listaPedidosAsync(int idcliente)
         {
             return base.Channel.listaPedidosAsync(idcliente);
         }
         
-        public System.Threading.Tasks.Task<PedidosServiceReference.PedidoFastFood> actualizarEstadoPedidoAsync(PedidosServiceReference.PedidoFastFood pedidoFastFood)
+        public System.Threading.Tasks.Task<FastSoapServiceReference.PedidoFastFood> actualizarEstadoPedidoAsync(FastSoapServiceReference.PedidoFastFood pedidoFastFood)
         {
             return base.Channel.actualizarEstadoPedidoAsync(pedidoFastFood);
         }

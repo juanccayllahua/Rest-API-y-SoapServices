@@ -15,22 +15,22 @@ namespace WebFastFodd.Pages
         }
 
 
-        [BindProperty]
-        public PedidosServiceReference.PedidoFastFood PedidoFastFood { get; set; }
-        public async Task<IActionResult> OnPostAsync()
-        {
-            PedidosServiceReference.PedidosFastFoodServicesClient objcliente
-                = new PedidosServiceReference.PedidosFastFoodServicesClient();
+        //[BindProperty]
+        //public PedidosServiceReference.PedidoFastFood PedidoFastFood { get; set; }
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    PedidosServiceReference.PedidosFastFoodServicesClient objcliente
+        //        = new PedidosServiceReference.PedidosFastFoodServicesClient();
 
 
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-             
-            await objcliente.registrarPedidoAsync(PedidoFastFood);
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page();
+        //    }
 
-            return RedirectToPage("./Index");
-        }
+        //    await objcliente.registrarPedidoAsync(PedidoFastFood);
+
+        //    return RedirectToPage("./Index");
+        //}
     }
 }

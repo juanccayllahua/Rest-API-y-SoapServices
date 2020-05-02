@@ -6,16 +6,16 @@
   },
   "ExtendedData": {
     "inputs": [
-      "http://localhost:60394/FastFoodServiceApi.svc"
+      "http://localhost:65518/PedidosFastFoodServices.svc"
     ],
     "collectionTypes": [
       "System.Array",
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, RestServiceReference"
+      "*, FastSoapServiceReference"
     ],
     "targetFramework": "net461",
-    "typeReuseMode": "None"
+    "typeReuseMode": "All"
   }
 }

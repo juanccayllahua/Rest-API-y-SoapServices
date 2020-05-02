@@ -28,7 +28,7 @@
 
 
         <div id="feedback"></div>
-        <form class="form-horizontal" id="search-form">
+        <div class="form-horizontal" id="search-form">
             <div class="row form-group">
                 <div class="col-6">
                     <strong style="text-align:center"> INFORMACION DE PAGO</strong>
@@ -42,13 +42,13 @@
                 </div>
                 <div class="col">
                     Tienda:
-                    <input type="text" class="form-control" id="Tienda" placeholder="Tienda" />
+                    <input type="text" class="form-control" id="Tienda" disabled placeholder="Tienda" />
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
                     Total pagar:
-                    <input type="text" class="form-control" id="TotalPagar" placeholder="Total" />
+                    <input type="text" class="form-control" id="TotalPagar" disabled placeholder="Total" />
 
                 </div>
                 <div class="col">
@@ -71,31 +71,96 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 text-center">
-                    <button type="submit" id="bth-search"
-                            class="btn btn-danger btn-sm">
-                        
-                        <a href="/Pedidos/Agradecimiento">Pagar</a>
+                    <button  id="bth-search"
+                            class="btn btn-danger btn-sm" onclick="pagar();">                        
+                         Pagar 
                     </button>
-                    <button type="submit" id="bth-search"
+                    <button  id="bth-pagar"
                             class="btn btn-danger btn-sm">
                         Cancelar
                     </button>
                 </div>
             </div>
-        </form>
+        </div>
 
 
     </div>
 
 </div>
-
-@*<div class="container">
-        <footer>
-            <p>
-                ©️ <a href="#">Demo</a> 2017
-            </p>
-        </footer>
-    </div>*@
  
+<script>
+    function geturlvars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+    
+    cargarformulario();
+    function cargarformulario() {
+        var codigopedido = geturlvars()["codigoretornadoo"];
+        var idProveedor = geturlvars()["idProveedor"];
+        var importeTot = geturlvars()["importeTot"];
 
+
+        var Nombres = "";//document.getElementById("Nombres");
+        var Tienda = document.getElementById("Tienda");
+        var TotalPagar = document.getElementById("TotalPagar");
+
+         //var campocant = document.getElementById(textoingresado);
+        //var cantidadprod = document.getElementById(textoingresado).value;
+        //var valuesumar = parseInt(cantidadprod);
+        //document.getElementById(textoingresado).value = cantidadprod + 1;
+        //cantidadprod = (parseInt(valuesumar) + parseInt(1));
+        //document.getElementById(textoingresado).innerHTML = cantidadprod;
+
+        //function gfg_Run() {
+        $.get("https://localhost:44329/api/v1/providers", function (data, status) {
+            $.each(data, function (key, value) {
+                var jsonData = JSON.stringify(value);
+                //Parse JSON
+                var objData = $.parseJSON(jsonData);
+                console.log(objData);
+                if (idProveedor == objData.idProveedor) {
+                    //alert(111);
+                    Nombres = objData.razonsocial;
+                    //console.log(Nombres);
+                    Tienda.setAttribute('value', Nombres);
+                    Tienda.innerHTML =
+                        "Value = " + "'" + Nombres + "'";
+                }
+                //objData.nombreProducto
+                //if (objData.idProducto == x.idproductovalue && objData.idProveedor == x.idproveedorvalue) {
+                //    tdProducto.innerHTML = ' <img src="' + objData.urlimg + '" width=\'40px\' height=\'50px\'> <br/>' + objData.nombreProducto;
+                //    //$('<tr > <th scope="row">1</th><td><img src="' + objData.urlimg + '" class="mr-3" alt="..." width="150px" height="50px">' + objData.nombreProducto + '</td><td><input type="number" id="nCantidad4" style="width:50px" class="form-control-sm" autofocus />   <button class="btn-danger btn-sm">+</button><button class="btn-danger btn-sm">-</button></td><td>S/. 30</td><td><button type="button" class="btn btn-danger btn-sm" id="borrar" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">Quitar</button></td></tr>').appendTo('#tblist');
+                //}
+                //tdPrecio.innerHTML = "S/. " + objData.precio;
+                
+
+            });
+        });
+
+
+        Tienda.setAttribute('value', Nombres);
+        Tienda.innerHTML =
+            "Value = " + "'" + Nombres + "'";
+
+        TotalPagar.setAttribute('value', importeTot);
+        TotalPagar.innerHTML =
+            "Value = " + "'" + importeTot + "'";
+    }
+
+    function pagar() {
+        var codigopedido = geturlvars()["codigoretornadoo"];
+        alert(codigopedido);
+        var datoscomprador = document.getElementById("Nombres").value;
+        var Tienda = document.getElementById("Tienda").value;
+        //var TotalPagar = document.getElementById("TotalPagar");
+        //alert(codigopedido);
+        window.location.href = "https://localhost:44321/Pedidos/Agradecimiento?codigopedido=" + codigopedido
+            + "&&datoscomprador=" + datoscomprador + "&&Tienda=" + Tienda;
+    }
+
+</script>
  

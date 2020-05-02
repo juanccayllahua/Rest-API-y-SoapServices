@@ -3,18 +3,66 @@
 @{
     ViewData["Title"] = "Registrar Pedido";
 }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div style="float:right">
-    <a asp-page="/ProductosProveedor/ConfirmarPedido">
+    <a asp-page="#">
         <i class="fa fa-shopping-cart fa-3x" style="color:darkred"></i>
         <br /><small class="text-muted">Ver Carrito</small>
+        <br /><small class="text-muted" id="cantidad"></small>
     </a>
 </div>
+<div id="lsconfirmpedidos">
+    @*<table class="table" style="margin-bottom:10px"><thead><tr><th scope="col">#</th><th scope="col">Producto</th><th scope="col">Agregar</th><th scope="col">Precio</th><th scope="col">Quitar</th></tr></thead><tbody id="tblist"></tbody></table>*@
+    Confirmar Pedidos
+    <table id="grid" class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width:200px;">Producto</th>
+                <th class="text-center">Cantidad</th>
+                <th>Precio</th>
+                <th style="width:80px;">
+                    quitar
+                </th>
+
+                <th style="visibility: hidden;">IdProducto</th>
+                <th style="visibility: hidden;">IdProveedor</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10 text-center">
+            <input class="form-control-sm" type="text" placeholder="Selecione sede de entrega" />
+            <input class="form-control-sm" type="date" placeholder="Fecha y Hora de Entrega" />
+            <button id="bth-confirma"
+                    class="btn btn-danger btn-sm" onclick="registrarPedido();">
+                @*<a href="/ProductosProveedor/Pago">*@
+                Confirmar pedido
+                @*</a>*@
+
+            </button>
+        </div>
+    </div>
+</div>
+<div id="pedidos"></div>
+
+
+
+
 <div class="containtop" style="padding-top: 120px;">
 
 
 </div>
-STARBUCK > Realizar Pedido
-<div class="card-deck">
+<div id="titlepedido">
+    KFC > Realizar Pedido
+</div>
+<div class="card-deck" id="listproductos">
+
+
+</div>
+<div class="card-deck" style="display:none">
     <div class="card" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);background: #ffffff;border: 1px solid #c2c2c2;padding: 10px;">
         <img class="card-img-top" src="https://www.starbucks.com.pe/media/STBX-CALADOS-96X123-algarrobina_tcm92-46375_w1024_n.png" alt="Card image cap">
         <div class="card-body">
@@ -26,7 +74,7 @@ STARBUCK > Realizar Pedido
             </footer>
         </div>
     </div>
-    <div class="card" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);background: #ffffff;border: 1px solid #c2c2c2;padding: 10px;">
+    <div class="card" style="box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5); background: #ffffff; border: 1px solid #c2c2c2; padding: 10px; ">
         <img class="card-img-top" src="https://www.starbucks.com.pe/media/MARSHMELLOW_tcm92-46374_w1024_n.png" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
@@ -60,3 +108,476 @@ STARBUCK > Realizar Pedido
         </div>
     </div>
 </div>
+<div class="text-center">
+    <br />
+    <button onclick="pedir()" class="btn-danger btn-sm " id="ircarro">Ir al carrito</button>
+</div>
+<script>
+
+    //hola32
+
+    var localStorageKeyName = 'data';
+    document.getElementById("lsconfirmpedidos").style.display = "none";
+    $(function () {
+        $(document).on('click', '#borrar', function (event) {
+            event.preventDefault();
+            $(this).closest('tr').remove();
+        });
+    });
+
+    var element = {}, cart = [];
+
+    function pedir() {
+
+        document.getElementById("listproductos").style.display = "none";
+        document.getElementById("lsconfirmpedidos").style.display = "block";
+        document.getElementById("titlepedido").style.display = "none";
+
+        document.getElementById("ircarro").style.display = "none";
+
+    }
+
+    /************************* */
+
+    //function quitar();
+
+    function quitar(textoingresado) {
+        //function removeFromLocalStorage(index) {
+        var pedido = [],
+            dataInLocalStorage = localStorage.getItem(localStorageKeyName);
+
+        pedido = JSON.parse(dataInLocalStorage);
+
+        pedido.splice(index, 1);
+
+        localStorage.setItem(localStorageKeyName, JSON.stringify(pedido));
+
+
+
+        //loadFromLocalStorage();
+        //}
+    }
+    /*agregar*/
+    function agregar(textoingresado) {
+        //console.log(textoingresado);
+
+        var idproveedor = "";
+        var idpoducto = "";
+        var idproveedorvalue = 0;
+        var idproductovalue = 0;
+        var arrayDeCadenas = textoingresado.split("_");
+        for (var i = 0; i < arrayDeCadenas.length; i++) {
+            //document.write(arrayDeCadenas[i] + " / ");
+
+            if (i == 0) {
+                idpoducto = arrayDeCadenas[i];
+            }
+            if (i == 1) {
+                idproductovalue = arrayDeCadenas[i];
+            }
+            if (i == 2) {
+                idproveedor = arrayDeCadenas[i];
+            }
+            if (i == 3) {
+                idproveedorvalue = arrayDeCadenas[i];
+            }
+        }
+
+        //console.log("idproveedor : " + idproveedorvalue);
+        //console.log("idpoducto : " + idproductovalue);
+
+
+        //tx_prod3provee2
+        var campocant = document.getElementById(textoingresado);
+        var cantidadprod = document.getElementById(textoingresado).value;
+        var valuesumar = parseInt(cantidadprod);
+        //document.getElementById(textoingresado).value = cantidadprod + 1;
+        cantidadprod = (parseInt(valuesumar) + parseInt(1));
+        document.getElementById(textoingresado).innerHTML = cantidadprod;
+
+        //function gfg_Run() {
+        campocant.setAttribute('value', cantidadprod);
+        campocant.innerHTML =
+            "Value = " + "'" + cantidadprod + "'";
+
+
+        var pedido = {
+            idproductovalue: idproductovalue,
+            idproveedorvalue: idproveedorvalue,
+            cantidadprod: cantidadprod
+            //(objData.idProducto == idproducto && objData.idProveedor == idproveedor)
+        };
+        appendObjectToLocalStorage(pedido);
+
+
+    }
+    function agregarcompra(textoingresado) {
+
+        var campocant = document.getElementById(textoingresado);
+        var cantidadprod = document.getElementById(textoingresado).value;
+        var valuesumar = parseInt(cantidadprod);
+        //document.getElementById(textoingresado).value = cantidadprod + 1;
+        cantidadprod = (parseInt(valuesumar) + parseInt(1));
+        document.getElementById(textoingresado).innerHTML = cantidadprod;
+
+        //function gfg_Run() {
+        campocant.setAttribute('value', cantidadprod);
+        campocant.innerHTML =
+            "Value = " + "'" + cantidadprod + "'";
+
+    }
+    function reducir(textoingresado) {
+        var campocant = document.getElementById(textoingresado);
+        var cantidadprod = document.getElementById(textoingresado).value;
+        var valuesumar = parseInt(cantidadprod);
+        //document.getElementById(textoingresado).value = cantidadprod + 1;
+        cantidadprod = (parseInt(valuesumar) - parseInt(1));
+        document.getElementById(textoingresado).innerHTML = cantidadprod;
+
+        //function gfg_Run() {
+        campocant.setAttribute('value', cantidadprod);
+        campocant.innerHTML =
+            "Value = " + "'" + cantidadprod + "'";
+    }
+    function appendObjectToLocalStorage(obj) {
+        var pedidos = [],
+            dataInLocalStorage = localStorage.getItem(localStorageKeyName);
+
+        if (dataInLocalStorage !== null) {
+            pedidos = JSON.parse(dataInLocalStorage);
+        }
+
+        var idproducto = obj["idproductovalue"];
+        var idproveedorvalue = obj["idproveedorvalue"];
+        var cantidadprod = obj["cantidadprod"];
+
+        //console.log("paramobjet : "+paramobjet);
+        var eliminapedidodata = [];
+        var idprod = 0;
+        var idprovee = 0;
+        var cant = 0;
+
+        //var datapedido = [], dataactual;
+
+        //pedidos.forEach(function (x, i) {
+        //    if ((x.cantidadprod !== cantidadprod || x.idproveedorvalue !== idproveedorvalue) && x.idproductovalue !== idproducto) {
+        //        cant = x.cantidadprod;
+        //        idprod = x.idproductovalue;
+        //        idprovee = x.idproveedorvalue;
+
+        //        dataactual = localStorage.getItem(localStorageKeyName);
+
+        //        if (dataInLocalStorage !== null) {
+        //            datapedido = JSON.parse(dataactual);
+        //        }
+
+        //        datapedido.forEach(function (y, i) {
+
+        //            if ((x.cantidadprod !== y.cantidadprod || x.idproveedorvalue !== y.idproveedorvalue) && x.idproductovalue !== y.idproductovalue) {
+        //                cant = x.cantidadprod;
+        //                idprod = x.idproductovalue;
+        //                idprovee = x.idproveedorvalue;
+
+        //                var eliminapedido = {
+        //                    idproductovalue: idproducto,
+        //                    idproveedorvalue: idproveedorvalue,
+        //                    cantidadprod: cantidadprod
+        //                    //(objData.idProducto == idproducto && objData.idProveedor == idproveedor)
+        //                };
+
+        //                eliminapedidodata.push(eliminapedido);
+        //                localStorage.setItem(localStorageKeyName, JSON.stringify(eliminapedidodata));
+
+
+        //            }
+        //        });
+
+        //    }
+        //});
+
+
+        pedidos.push(obj);
+
+        localStorage.setItem(localStorageKeyName, JSON.stringify(pedidos));
+
+        loadFromLocalStorage();
+    }
+
+    //mostrar
+
+    function loadFromLocalStorage() {
+        var pedidos = [],
+            dataInLocalStorage = localStorage.getItem(localStorageKeyName),
+            gridBody = document.querySelector("#grid tbody");
+
+        if (dataInLocalStorage !== null) {
+            pedidos = JSON.parse(dataInLocalStorage);
+        }
+
+        // Draw TR from TBODY
+        gridBody.innerHTML = '';
+
+        var idprodantes = 0;
+        var idproveantes = 0;
+        var idcantantes = 0;
+
+        pedidos.forEach(function (x, i) {
+
+
+
+            if ((x.cantidadprod !== idcantantes || x.idproveedorvalue !== idproveantes) && x.idproductovalue !== idprodantes) {
+                idcantantes = x.cantidadprod;
+                idprodantes = x.idproductovalue;
+                idproveantes = x.idproveedorvalue;
+
+                var tr = document.createElement("tr"),
+                    tdProducto = document.createElement("td"),
+                    tdCantidad = document.createElement("td"),
+                    tdPrecio = document.createElement("td"),
+                    tdRemove = document.createElement("td"),
+                    btnRemove = document.createElement("button"),
+                    tdIdProducto = document.createElement("td"),
+                    tdIdProveedor = document.createElement("td");
+
+                //tdName.innerHTML = x.idproveedorvalue;
+                tdIdProducto.innerHTML = x.idproductovalue;
+                tdIdProveedor.innerHTML = x.idproveedorvalue;
+                var texttooo = "txtprod" + x.idproductovalue + "_proveed" + x.idproveedorvalue;
+                tdCantidad.innerHTML = '<button class="btn-danger btn-sm" onclick="reducir(\'' + texttooo + '\')">-</button><input type="text" id="' + texttooo + '" style="width:50px" class="form-control-sm" autofocus value="' + x.cantidadprod + '"/><button class="btn-danger btn-sm" onclick="agregarcompra(\'' + texttooo + '\')">+</button>';
+
+
+
+
+                $.get("https://localhost:44329/api/v1/products/" + x.idproveedorvalue, function (data, status) {
+                    $.each(data, function (key, value) {
+                        var jsonData = JSON.stringify(value);
+                        //Parse JSON
+                        var objData = $.parseJSON(jsonData);
+                        //console.log(objData);
+                        if (objData.idProducto == x.idproductovalue && objData.idProveedor == x.idproveedorvalue) {
+                            tdProducto.innerHTML = ' <img src="' + objData.urlimg + '" width=\'40px\' height=\'50px\'> <br/>' + objData.nombreProducto;
+                            //$('<tr > <th scope="row">1</th><td><img src="' + objData.urlimg + '" class="mr-3" alt="..." width="150px" height="50px">' + objData.nombreProducto + '</td><td><input type="number" id="nCantidad4" style="width:50px" class="form-control-sm" autofocus />   <button class="btn-danger btn-sm">+</button><button class="btn-danger btn-sm">-</button></td><td>S/. 30</td><td><button type="button" class="btn btn-danger btn-sm" id="borrar" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">Quitar</button></td></tr>').appendTo('#tblist');
+                        }
+                        tdPrecio.innerHTML = "S/. " + objData.precio;
+
+                    });
+                });
+
+
+                btnRemove.textContent = 'Remove';
+                btnRemove.className = 'btn btn-xs btn-danger';
+                btnRemove.addEventListener('click', function () {
+                    removeFromLocalStorage(i);
+                });
+
+                tdRemove.appendChild(btnRemove);
+
+                tr.appendChild(tdProducto);
+                tr.appendChild(tdCantidad);
+                tr.appendChild(tdPrecio);
+                tr.appendChild(tdRemove);
+                tr.appendChild(tdIdProducto).style.display = "none";
+                tr.appendChild(tdIdProveedor).style.display = "none";
+
+                gridBody.appendChild(tr);
+
+            }
+
+
+
+        });
+    }
+    function removeFromLocalStorage(index) {
+        //alert(index);
+
+        var pedidos = [],
+            dataInLocalStorage = localStorage.getItem(localStorageKeyName);
+
+        pedidos = JSON.parse(dataInLocalStorage);
+
+        pedidos.splice(index, 1);
+
+
+
+        //console.log("_pedidos_ : " + pedidos);
+
+        localStorage.setItem(localStorageKeyName, JSON.stringify(pedidos));
+
+        //console.log(JSON.stringify(pedidos));
+
+        loadFromLocalStorage();
+    }
+
+    function geturlvars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+    var idproveedor = geturlvars()["idproveedor"];
+    var mytext = geturlvars()["idproveedor"];
+    fire_ajax_submit();
+
+
+    function fire_ajax_submit() {
+
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: "https://localhost:44329/api/v1/products/" + idproveedor,
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    //stringify
+                    var jsonData = JSON.stringify(value);
+                    //Parse JSON
+                    var objData = $.parseJSON(jsonData);
+                    //console.log(objData);
+
+                    var nombreproducto = objData.nombreProducto;
+                    var descrproducto = objData.descrProducto;
+                    var urlimg = objData.urlimg;
+                    var idProducto = objData.idProducto;
+                    var idProveedor = objData.idProveedor;
+
+                    var texttooo = "idProducto_" + idProducto + "_idProveedor_" + idProveedor;
+                    $('<div class= "card" style = "box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);background: #ffffff;border: 1px solid #c2c2c2;padding: 10px;"> <img class="card-img-top" src="' + urlimg + '" alt="Card image cap"><div class="card-body"><h5 class="card-title">' + nombreproducto + '</h5><p class="card-text">' + descrproducto + '</p><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p><footer><button class="btn-danger btn-sm" onclick="reducir(\'' + texttooo + '\')">-</button><input type="text"  id="' + texttooo + '" style="width:50px" class="form-control-sm" autofocus value="0"/><button class="btn-danger btn-sm" onclick="agregar(\'' + texttooo + '\')">+</button></footer></div></div>').appendTo('#listproductos');
+                    //$('<div class= "card" style = "box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);background: #ffffff;border: 1px solid #c2c2c2;padding: 10px;"> <img class="card-img-top" src="' + urlimg + '" alt="Card image cap"><div class="card-body"><h5 class="card-title">' + nombreproducto + '</h5><p class="card-text">' + descrproducto + '</p><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p><footer><input type="text"  id="' + texttooo + '" style="width:50px" class="form-control-sm" autofocus value="0"/><button class="btn-danger btn-sm" onclick="agregar(\'' + texttooo + '\')">agregar</button></footer></div></div>').appendTo('#listproductos');
+                }
+                );
+            },
+            error: function (e) {
+
+
+                console.log("ERROR : ", e);
+
+            }
+        });
+
+    }
+
+    loadFromLocalStorage();
+
+    function converttabletoarray() {
+        var array = [];
+        var headers = [];
+        $('#grid th').each(function (index, item) {
+            headers[index] = $(item).html();
+        });
+        $('#grid tr').has('td').each(function () {
+            var arrayItem = {};
+            $('td', $(this)).each(function (index, item) {
+                //alert("holaaa");
+                //if (headers[index] == "Cantidad") {
+                //    alert("hola");
+                //    $('input').each(function () {
+                //        arrayItem[headers[index]] = this.value;
+
+                //        console.log("this  " + $(this).text());
+                //        //alert(this.value);
+                //        //values[$(this).attr('name')] = $(this).val();
+                //        //console.log("cantidad : "+values[$(this).attr('name')]);
+                //        //arrayItem[headers[index]] = values[$(this).attr('name')];
+                //    });
+                //} else {
+                arrayItem[headers[index]] = $(item).html();
+                //}
+                //if (headers[index] =="Cantidad") {
+                //    console.log("sdasdasdasdasd : "+$(item).html().has('input').value());
+                //}
+                //.rows[0].cells[2].input.value
+            });
+            array.push(arrayItem);
+
+        });
+
+        //console.log(array);
+    }
+
+    /**/
+
+    function registrarPedido() {
+        var codigoretornadoo = "";
+        var producto = "";
+        var proveedor = "";
+        var importe = "";
+
+        var pedidos = [],
+            dataInLocalStorage = localStorage.getItem(localStorageKeyName);
+
+        if (dataInLocalStorage !== null) {
+            pedidos = JSON.parse(dataInLocalStorage);
+        }
+        pedidos.forEach(function (x, i) {
+            cant = x.cantidadprod;
+            idprod = x.idproductovalue;
+            idprovee = x.idproveedorvalue;
+            var pedido = {
+                CodigoPedido: Math.random().toString(36).substring(7),
+                IdProveedor: "1",
+                IdCliente: "1",
+                ImporteTot: "100",
+                IdEstadoPedido: "1"
+            }
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "https://localhost:44329/api/FastPedidos",
+                data: JSON.stringify(pedido),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        //stringify
+                        var jsonData = JSON.stringify(value);
+                        //Parse JSON
+                        //codigoretornadoo = $.parseJSON(jsonData);
+
+
+                        console.log("hola " + key + " key " + value);
+
+                        if (key == "codigoPedido") {
+                            codigoretornadoo = value;
+
+                            console.log("Hola el codigo de su pedido es " + codigoretornadoo);
+
+                        } else if (key == "idProveedor") {
+                            proveedor = value;
+                            //var producto = "";
+                            //var proveedor = "";
+                            //var importe = "";
+                        } else if (key == "importeTot") {
+                            importe = value;
+                        }
+                        
+                    });
+                    //alert(codigoretornadoo);
+                    window.location.href = "https://localhost:44321/ProductosProveedor/Pago?codigoretornadoo=" + codigoretornadoo + "&&idProveedor=" + proveedor + "&&importeTot=" + importe;
+                    //window.location.href = "https://localhost:44321/ProductosProveedor/Pago?codigoretornadoo=" + codigoretornadoo;
+
+
+                },
+                error: function (e) {
+
+
+
+                }
+            });
+
+            //console.log("Objeto JavaScript: ", pedido.CodigoPedido);
+
+        });
+
+
+        //$("#btn-search").prop("disabled", true);
+
+
+
+    }
+</script>
